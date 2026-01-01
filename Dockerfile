@@ -4,12 +4,12 @@ FROM wordpress:latest
 RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable mysqli
 
 # Copy custom theme and plugins from local to container
-COPY ./wordpress/wp-content/themes /var/www/html/wp-content/themes
-COPY ./wordpress/wp-content/plugins /var/www/html/wp-content/plugins
+COPY ./wordpress/wp-content/themes /var/www/html/wordpress/wp-content/themes
+COPY ./wordpress/wp-content/plugins /var/www/html/wordpress/wp-content/plugins
 
 # Set proper permissions
-RUN chown -R www-data:www-data /var/www/html/wp-content
-RUN chmod -R 755 /var/www/html/wp-content
+RUN chown -R www-data:www-data /var/www/html/wordpress/wp-content
+RUN chmod -R 755 /var/www/html/wordpress/wp-content
 
 # Copy PHP settings
 COPY uploads.ini /usr/local/etc/php/conf.d/uploads.ini
